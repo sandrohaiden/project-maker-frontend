@@ -1,0 +1,15 @@
+<div class="mat-display-1" style="text-align: center">
+    <span>Excluir Projeto</span>
+  </div>
+<div class="mat-body-strong" style="text-align: center">
+  Quer realmente deletar o projeto "{{data.nome}}" ?
+  <div class="content">
+    <button mat-raised-button color="warn" (click)="dialogRef.close()">
+        Não
+    </button>
+    <button mat-raised-button color="primary" (click)="excluir()">
+        Sim
+    </button>
+  </div>
+  
+</div>

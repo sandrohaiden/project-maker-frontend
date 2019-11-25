@@ -1,0 +1,33 @@
+<div class="mat-display-1" style="text-align: center">
+  <span *ngIf="data !== null">Editar Projeto</span>
+  <span *ngIf="data == null">Cadastrar Projeto</span>
+</div>
+<form [formGroup]="formGroup">
+  <mat-form-field style="width: 100%;">
+    <input matInput placeholder="Nome" formControlName="nome" />
+  </mat-form-field>
+  <mat-form-field style="width: 100%;">
+    <span matPrefix>R$ &nbsp;</span>
+    <input matInput placeholder="Valor" formControlName="valor" />
+  </mat-form-field>
+
+  <div fxLayout="row wrap" fxLayoutAlign="space-between">
+    <mat-form-field>
+      <input matInput readonly [matDatepicker]="inicio" (dateChange)="inicioChanged()" formControlName="inicio" placeholder="Início">
+      <mat-datepicker-toggle matSuffix [for]="inicio"></mat-datepicker-toggle>
+      <mat-datepicker disabled = "false" #inicio></mat-datepicker>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput [min]="minDate" readonly [matDatepicker]="fim" placeholder="Fim" formControlName="fim">
+      <mat-datepicker-toggle matSuffix [for]="fim"></mat-datepicker-toggle>
+      <mat-datepicker #fim [disabled]="formGroup.controls['inicio'].value==null"></mat-datepicker>
+    </mat-form-field>
+  </div>
+</form>
+
+<div>
+  <button mat-raised-button [disabled] = "!formGroup.valid" color="primary" color="primary" (click)="salvar()">
+    salvar
+  </button>
+</div>
